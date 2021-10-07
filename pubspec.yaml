@@ -47,6 +47,9 @@ dependencies:
   table_calendar: ^3.0.2
   shared_preferences: ^2.0.8
   syncfusion_flutter_calendar: ^19.3.43+1
+  provider: ^6.0.1
+  graphite: ^0.3.0
+  sqflite: ^2.0.0+4
 
 dev_dependencies:
   flutter_test:
@@ -74,6 +77,9 @@ flutter:
   assets:
     - assets/images/banner.png
     - assets/images/tst2.png
+    - assets/images/banner_dark.png
+    - assets/images/dark.jpeg
+    - assets/images/dark.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

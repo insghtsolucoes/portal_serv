@@ -3,6 +3,11 @@ import 'package:getwidget/getwidget.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/gestures.dart';
 import 'package:async/async.dart';
+import 'package:table_calendar/table_calendar.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
+import '../utils.dart';
+
+import 'package:intl/date_symbol_data_local.dart';
 
 const _ramais = 'http://10.1.0.16:3002/';
 const _email = 'https://webmail.santaluzia.mg.gov.br/SOGo/so/';
@@ -18,6 +23,9 @@ class homephone extends StatefulWidget {
 }
 
 class _homephoneState extends State<homephone> {
+  CalendarFormat _calendarFormat = CalendarFormat.month;
+  DateTime _focusedDay = DateTime.now();
+  DateTime? _selectedDay;
   @override
   Widget build(BuildContext context) {
     return LayoutBuilder(
@@ -32,16 +40,16 @@ class _homephoneState extends State<homephone> {
                       children: [
                         Positioned.fill(
                             child: Image.asset(
-                          "assets/images/banner.png",
+                          "assets/images/dark.jpeg",
                           fit: BoxFit.cover,
                         )),
                         Container(
                           padding: EdgeInsets.all(16.0),
                           alignment: Alignment.topRight,
                           child: Text(
-                            'Central de Aplicações do Servidor Municipal - Smartphone',
+                            'Central de Aplicações do Servidor Municipal',
                             style: TextStyle(
-                                color: Colors.blueGrey[100], fontSize: 20.0),
+                                color: Colors.blueGrey[100], fontSize: 12.0),
                           ),
                         ),
                       ],
@@ -344,11 +352,56 @@ class _homephoneState extends State<homephone> {
                           ),
                         ),
                       ),
+                      Padding(
+                        padding: const EdgeInsets.all(1.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Flexible(
+                              child: SizedBox(
+                                height: 400,
+                                width: 600,
+                                child: TableCalendar(
+                                  locale: ("pt_BR"),
+                                  firstDay: kFirstDay,
+                                  lastDay: kLastDay,
+                                  focusedDay: _focusedDay,
+                                  calendarFormat: _calendarFormat,
+                                  selectedDayPredicate: (day) {
+                                    return isSameDay(_selectedDay, day);
+                                  },
+                                  onDaySelected: (selectedDay, focusedDay) {
+                                    if (!isSameDay(_selectedDay, selectedDay)) {
+                                      // Call `setState()` when updating the selected day
+                                      setState(() {
+                                        _selectedDay = selectedDay;
+                                        _focusedDay = focusedDay;
+                                      });
+                                    }
+                                  },
+                                  onFormatChanged: (format) {
+                                    if (_calendarFormat != format) {
+                                      // Call `setState()` when updating calendar format
+                                      setState(() {
+                                        _calendarFormat = format;
+                                      });
+                                    }
+                                  },
+                                  onPageChanged: (focusedDay) {
+                                    // No need to call `setState()` here
+                                    _focusedDay = focusedDay;
+                                  },
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
                       Column(
                         mainAxisAlignment: MainAxisAlignment.end,
                         children: [
                           Container(
-                            height: 220.0,
+                            height: 10.0,
                           ),
                           Text(
                               "Secretaria de Administração | Tecnlogia da Informação",

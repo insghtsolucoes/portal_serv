@@ -51,22 +51,22 @@ class _homewebState extends State<homeweb> {
         child: CustomScrollView(
           slivers: [
             SliverAppBar(
-              expandedHeight: 260,
+              expandedHeight: 245,
               elevation: 14,
               flexibleSpace: Stack(
                 children: [
                   Positioned.fill(
                       child: Image.asset(
-                    "assets/images/banner.png",
+                    "assets/images/dark.jpeg",
                     fit: BoxFit.cover,
                   )),
                   Container(
                     padding: EdgeInsets.all(4.0),
                     alignment: Alignment.topRight,
                     child: Text(
-                      'Central de Aplicações do Servidor Municipal - Web',
+                      'Central de Aplicações do Servidor Municipal',
                       style: TextStyle(
-                          color: Colors.blueGrey[100], fontSize: 20.0),
+                          color: Colors.blueGrey[100], fontSize: 12.0),
                     ),
                   ),
                 ],
@@ -77,8 +77,8 @@ class _homewebState extends State<homeweb> {
                 Padding(
                   padding: const EdgeInsets.all(1.0),
                   child: Container(
-                    margin: EdgeInsets.all(30),
-                    height: 200.0,
+                    margin: EdgeInsets.all(5),
+                    height: 140.0,
                     // width: 10,
                     alignment: Alignment.topCenter,
                     decoration: BoxDecoration(
@@ -91,9 +91,9 @@ class _homewebState extends State<homeweb> {
                           ), */
                     ),
                     child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("\n"),
+                        // Text("\n"),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -126,7 +126,7 @@ class _homewebState extends State<homeweb> {
                                                       const EdgeInsets.all(8.0),
                                                   child: Icon(
                                                     Icons.support_agent_sharp,
-                                                    size: 70,
+                                                    size: 90,
                                                     color: Colors.white60,
                                                   ),
                                                 ),
@@ -160,7 +160,7 @@ class _homewebState extends State<homeweb> {
                                                       const EdgeInsets.all(8.0),
                                                   child: Icon(
                                                     Icons.email,
-                                                    size: 70,
+                                                    size: 90,
                                                     color: Colors.white60,
                                                   ),
                                                 ),
@@ -194,7 +194,7 @@ class _homewebState extends State<homeweb> {
                                                       const EdgeInsets.all(8.0),
                                                   child: Icon(
                                                     Icons.phone_enabled_rounded,
-                                                    size: 70,
+                                                    size: 90,
                                                     color: Colors.white60,
                                                   ),
                                                 ),
@@ -227,7 +227,7 @@ class _homewebState extends State<homeweb> {
                                                   child: Icon(
                                                     Icons
                                                         .account_balance_wallet_rounded,
-                                                    size: 70,
+                                                    size: 90,
                                                     color: Colors.white60,
                                                   ),
                                                 ),
@@ -248,7 +248,7 @@ class _homewebState extends State<homeweb> {
                         ),
                         Flexible(
                           child: Text(
-                              "__________________________________________________________________________________________________\n \n",
+                              "__________________________________________________________________________________________________\n",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.blueGrey[100], fontSize: 10.0)),
@@ -259,60 +259,64 @@ class _homewebState extends State<homeweb> {
                 ),
                 Padding(
                   padding: const EdgeInsets.all(1.0),
-                  child: Container(
-                      margin: EdgeInsets.all(30),
-                      height: 400.0,
-                      width: 250.0,
-                      alignment: Alignment.topCenter,
-                      decoration: BoxDecoration(
-                        color: Colors.transparent.withOpacity(0.09),
-                        border: Border.all(color: Colors.blueGrey, width: 0.2),
-                        borderRadius: BorderRadius.circular(08),
-                        /*    image: const DecorationImage(
-                            image: AssetImage('assets/images/tst.png'),
-                            fit: BoxFit.cover,
-                          ), */
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          SizedBox(
-                            height: 400,
-                            width: 600,
-                            child: TableCalendar(
-                              locale: ("pt_BR"),
-                              firstDay: kFirstDay,
-                              lastDay: kLastDay,
-                              focusedDay: _focusedDay,
-                              calendarFormat: _calendarFormat,
-                              selectedDayPredicate: (day) {
-                                return isSameDay(_selectedDay, day);
-                              },
-                              onDaySelected: (selectedDay, focusedDay) {
-                                if (!isSameDay(_selectedDay, selectedDay)) {
-                                  // Call `setState()` when updating the selected day
-                                  setState(() {
-                                    _selectedDay = selectedDay;
-                                    _focusedDay = focusedDay;
-                                  });
-                                }
-                              },
-                              onFormatChanged: (format) {
-                                if (_calendarFormat != format) {
-                                  // Call `setState()` when updating calendar format
-                                  setState(() {
-                                    _calendarFormat = format;
-                                  });
-                                }
-                              },
-                              onPageChanged: (focusedDay) {
-                                // No need to call `setState()` here
-                                _focusedDay = focusedDay;
-                              },
-                            ),
+                  child:
+                      // Container(
+                      //     margin: EdgeInsets.all(30),
+                      //     height: 400.0,
+                      //     width: 250.0,
+                      //     alignment: Alignment.topCenter,
+                      //     decoration: BoxDecoration(
+                      //       color: Colors.transparent.withOpacity(0.09),
+                      //       border: Border.all(color: Colors.blueGrey, width: 0.2),
+                      //       borderRadius: BorderRadius.circular(08),
+                      //       /*    image: const DecorationImage(
+                      //           image: AssetImage('assets/images/tst.png'),
+                      //           fit: BoxFit.cover,
+                      //         ), */
+                      //     ),
+                      //     child:
+                      Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        child: SizedBox(
+                          height: 400,
+                          width: 600,
+                          child: TableCalendar(
+                            locale: ("pt_BR"),
+                            firstDay: kFirstDay,
+                            lastDay: kLastDay,
+                            focusedDay: _focusedDay,
+                            calendarFormat: _calendarFormat,
+                            selectedDayPredicate: (day) {
+                              return isSameDay(_selectedDay, day);
+                            },
+                            onDaySelected: (selectedDay, focusedDay) {
+                              if (!isSameDay(_selectedDay, selectedDay)) {
+                                // Call `setState()` when updating the selected day
+                                setState(() {
+                                  _selectedDay = selectedDay;
+                                  _focusedDay = focusedDay;
+                                });
+                              }
+                            },
+                            onFormatChanged: (format) {
+                              if (_calendarFormat != format) {
+                                // Call `setState()` when updating calendar format
+                                setState(() {
+                                  _calendarFormat = format;
+                                });
+                              }
+                            },
+                            onPageChanged: (focusedDay) {
+                              // No need to call `setState()` here
+                              _focusedDay = focusedDay;
+                            },
                           ),
-                        ],
-                      )),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.end,
@@ -321,7 +325,7 @@ class _homewebState extends State<homeweb> {
                       height: 10.0,
                     ),
                     Text(
-                        "Secretaria de Administração | Tecnlogia da Informação",
+                        "Secretaria de Administração | Tecnologia da Informação",
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.blueGrey[100], fontSize: 20.0)),
