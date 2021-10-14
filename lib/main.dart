@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:portal_serv/paginas/calendario.dart';
 import 'package:portal_serv/paginas/home.dart';
 import 'package:portal_serv/paginas/TreeView.dart';
 import 'package:portal_serv/paginas/sistemas.dart';
@@ -76,29 +75,34 @@ class _DarkLightThemeState extends State<DarkLightTheme> {
         backgroundColor: Colors.blueGrey[900],
         appBar: GFAppBar(
           //centerTitle: true,
+
           title: Text(
             pageTitle[indexPage],
             textAlign: TextAlign.start,
           ),
           elevation: 8,
           actions: [
-            Column(
+            Row(
               children: [
-                Switch(
-                  value: _light,
-                  activeThumbImage: AssetImage(''),
-                  inactiveThumbImage: AssetImage(''),
-                  onChanged: (state) {
-                    setState(() {
-                      _light = state;
-                    });
-                  },
+                Column(
+                  children: [
+                    Switch(
+                      value: _light,
+                      activeThumbImage: AssetImage('assets/images/light.png'),
+                      inactiveThumbImage: AssetImage('assets/images/black.png'),
+                      onChanged: (state) {
+                        setState(() {
+                          _light = state;
+                        });
+                      },
+                    ),
+                    /*  Text(
+                      _light ? 'Claro' : 'Escuro',
+                      textAlign: TextAlign.end,
+                      style: TextStyle(fontSize: 8.0),
+                    ), */
+                  ],
                 ),
-                Text(
-                  _light ? 'Claro' : 'Escuro',
-                  textAlign: TextAlign.end,
-                  style: TextStyle(fontSize: 10.0),
-                )
               ],
             ),
           ],
@@ -109,7 +113,11 @@ class _DarkLightThemeState extends State<DarkLightTheme> {
               padding: const EdgeInsets.only(left: 72),
               child: IndexedStack(
                 index: indexPage,
-                children: [home(), sistemas(), TreeView(), CalendarApp()],
+                children: [
+                  home(),
+                  sistemas(),
+                  TreeView(),
+                ],
               ),
             ),
             Row(children: [

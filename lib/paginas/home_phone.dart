@@ -404,7 +404,7 @@ class _homephoneState extends State<homephone> {
                             height: 10.0,
                           ),
                           Text(
-                              "Secretaria de Administração | Tecnlogia da Informação",
+                              "Secretaria de Administração | Tecnologia da Informação",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   color: Colors.blueGrey[100], fontSize: 20.0)),
